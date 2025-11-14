@@ -5,6 +5,7 @@ on:
       - develop
 jobs:
   check-application:
+    name: check-application
     runs-on: ubuntu-latest
     strategy:
       matrix:
