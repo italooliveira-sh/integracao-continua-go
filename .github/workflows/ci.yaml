@@ -1,25 +1,19 @@
 name: CI golang workflow
-
 on:
-  push:
+  pull_request:
     branches:
-      - main
-
+      - develop
 jobs:
   check-application:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
         uses: actions/checkout@v4
-      
       - name: Set up golang
         uses: actions/setup-go@v6
         with:
           go-version: 1.22.2
-
       - name: Executando testes e rodando a aplicacao
         run: |
           go test
           go run math.go
-      
-    
