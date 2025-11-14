@@ -5,14 +5,18 @@ on:
       - develop
 jobs:
   check-application:
+    name: check-application
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        go: [1.22, 1.23]
     steps:
       - name: checkout
         uses: actions/checkout@v4
       - name: Set up golang
         uses: actions/setup-go@v6
         with:
-          go-version: 1.22.2
+          go-version: ${{ matrix.go }}
       - name: Executando testes e rodando a aplicacao
         run: |
           go test
